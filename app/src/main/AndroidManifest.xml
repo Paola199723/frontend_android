@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prueba"
         tools:targetApi="31">
+
+        <activity
+            android:name=".listaStock"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

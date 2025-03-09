@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         if (!validarEmail(email)) {
             email_text.setError("Email no válido")
             // Aquí agregas la lógica de validación
+        }else{
+            val intent = Intent(this, listaStock::class.java)
+            startActivity(intent)
         }
     }
 
