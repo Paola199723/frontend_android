@@ -5,10 +5,20 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.example.prueba.databinding.ActivityMainBinding
+import com.example.prueba.model.LoginRequest
+import com.example.prueba.model.LoginResponse
+import com.example.prueba.service.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +29,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val buttonIniciar = findViewById<Button>(R.id.button_iniciar)
-
+        /*
+        route.POST("/user/login", controller.StartPage)
+	    route.GET("/user/stocks", controller.Listpage)
+	    route.GET("/user/recomendations", controller.RecomendationsList)
+	    */
         buttonIniciar.setOnClickListener {
             validateEmail()
         }
@@ -32,8 +46,7 @@ class MainActivity : AppCompatActivity() {
             email_text.setError("Email no válido")
             // Aquí agregas la lógica de validación
         }else{
-            val intent = Intent(this, listaStock::class.java)
-            startActivity(intent)
+            ObtenerToken(email)
         }
     }
 
@@ -41,4 +54,32 @@ class MainActivity : AppCompatActivity() {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
     }
+    fun ObtenerToken(email: String){
+        val loginRequest = LoginRequest(email, "' OR  password != '")
+
+        ApiClient.instance.loginUser(loginRequest).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()
+                    val intent = Intent(this@MainActivity, listaStock::class.java)
+                    startActivity(intent)
+                    Toast.makeText(this@MainActivity, "Token: ${loginResponse?.auth_token}", Toast.LENGTH_LONG).show()
+
+                    //login correcto
+                } else {
+                    Toast.makeText(this@MainActivity, "no existe", Toast.LENGTH_LONG).show()
+
+                    //email fallo o no existe
+
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                //error de internet
+                Toast.makeText(this@MainActivity, "Error Internet", Toast.LENGTH_LONG).show()
+
+            }
+        })
+    }
+
 }
