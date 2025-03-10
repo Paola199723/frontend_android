@@ -1,32 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:gravity="center"
+    android:padding="24dp">
 
+    <!-- Sección Azul -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/blue"
+        android:gravity="bottom"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="24dp"/>
+    </LinearLayout>
+
+    <!-- Input Email -->
     <EditText
-        android:id="@+id/text_view_gmail"
-        android:layout_width="wrap_content"
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/button_iniciar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="Email or Username"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_email"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"/>
 
+    <!-- Botón de Iniciar Sesión -->
     <Button
-        android:id="@+id/button_iniciar"
-        android:layout_width="341dp"
-        android:layout_height="145dp"
-        android:text="Iniciar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/blue"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:background="@drawable/button_bg"/>
+</LinearLayout>

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="171dp"
-    android:layout_height="52dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="52dp"
-        android:padding="8dp"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:background="@drawable/textview_background"
-        />
+        android:id="@+id/txtCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtTicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ticker: XYZ"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
 </LinearLayout>

@@ -61,9 +61,11 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
-                    val intent = Intent(this@MainActivity, listaStock::class.java)
-                    startActivity(intent)
                     Toast.makeText(this@MainActivity, "Token: ${loginResponse?.auth_token}", Toast.LENGTH_LONG).show()
+
+                    val intent = Intent(this@MainActivity, listaStock::class.java)
+                    intent.putExtra("loginData", loginResponse)
+                    startActivity(intent)
 
                     //login correcto
                 } else {

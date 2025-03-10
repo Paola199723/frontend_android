@@ -1,17 +1,22 @@
+package com.example.prueba
+
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prueba.R
+import com.example.prueba.model.Items
 
 class CustomAdapter(
-    private val items: List<String>,
-    private val onItemClick: (Int) -> Unit // Agregamos la función de clic
+    private val context: Context,
+    private val items: List<Items> // Aquí pasamos la lista de Items completos
 ) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.textView)
+        val txtCompany: TextView = view.findViewById(R.id.txtCompany)
+        val txtTicker: TextView = view.findViewById(R.id.txtTicker)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,11 +26,14 @@ class CustomAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = items[position]
+        val item = items[position]
+        holder.txtCompany.text = item.company
+        holder.txtTicker.text = "Ticker: ${item.ticker}"
 
-        // Asignamos el click listener para cada item
+        // 📌 Agregar el evento onClick para abrir el BottomSheet
         holder.itemView.setOnClickListener {
-            onItemClick(position) // Llamamos la función con la posición del ítem
+            val bottomSheet = StockDetailBottomSheet(item)
+            bottomSheet.show((context as AppCompatActivity).supportFragmentManager, "StockDetailBottomSheet")
         }
     }
 
