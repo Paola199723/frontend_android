@@ -10,14 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/blue"
+        android:background="@color/design_default_color_primary"
         android:gravity="bottom"
         android:paddingBottom="24dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="Bienvenido"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
@@ -29,10 +29,10 @@
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email or Username"
+        android:hint="Email"
         android:padding="12dp"
         android:background="@drawable/edit_text_bg"
-        android:drawableStart="@drawable/ic_email"
+        android:drawableStart="@drawable/edit_text_bg"
         android:textSize="16sp"
         android:layout_marginTop="32dp"/>
 
@@ -41,9 +41,9 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SIGN IN"
+        android:text="Inciar"
         android:textAllCaps="false"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/design_default_color_primary"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:layout_marginTop="24dp"

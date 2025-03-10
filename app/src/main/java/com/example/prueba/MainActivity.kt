@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val buttonIniciar = findViewById<Button>(R.id.button_iniciar)
+        val buttonIniciar = findViewById<Button>(R.id.btnLogin)
         /*
         route.POST("/user/login", controller.StartPage)
 	    route.GET("/user/stocks", controller.Listpage)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validateEmail() {
-        val email_text = findViewById<EditText>(R.id.text_view_gmail)
+        val email_text = findViewById<EditText>(R.id.etEmail)
         val email = email_text.text.toString()
         if (!validarEmail(email)) {
             email_text.setError("Email no válido")
