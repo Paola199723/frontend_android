@@ -2,6 +2,8 @@ package com.example.prueba.service
 
 import com.example.prueba.model.LoginRequest
 import com.example.prueba.model.LoginResponse
+import com.example.prueba.model.RecomendationResponse
+import com.example.prueba.model.RecomendatiosItems
 import com.example.prueba.model.StockRequest
 import com.example.prueba.model.StockResponse
 import retrofit2.Call
@@ -17,4 +19,8 @@ interface ApiService {
 
     @GET("/user/stocks")
     fun Stocks(@Header("Authorization") authToken: String): Call<StockResponse>
+
+    @GET("user/recomendations")
+    fun Recomendations(): Call<List<RecomendatiosItems>>
+
 }
